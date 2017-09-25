@@ -7,11 +7,11 @@
     <Schema Namespace="Formations.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="FormationsStoreContainer">
     <EntitySet Name="StagiairesSet" EntityType="Formations.Store.StagiairesSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="StagesSet" EntityType="Formations.Store.StagesSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SectionsSet" EntityType="Formations.Store.SectionsSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="StagiairesSet_StagiaireCIF" EntityType="Formations.Store.StagiairesSet_StagiaireCIF" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="StagiairesSet_StagiaireDE" EntityType="Formations.Store.StagiairesSet_StagiaireDE" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="StagesStagiaires" Association="Formations.Store.StagesStagiaires">
-      <End Role="Stages" EntitySet="StagesSet" />
+    <AssociationSet Name="SectionsStagiaires" Association="Formations.Store.SectionsStagiaires">
+      <End Role="Sections" EntitySet="SectionsSet" />
       <End Role="Stagiaires" EntitySet="StagiairesSet" />
     </AssociationSet>
     <AssociationSet Name="FK_StagiaireCIF_inherits_Stagiaires" Association="Formations.Store.FK_StagiaireCIF_inherits_Stagiaires">
@@ -35,9 +35,9 @@
     <Property Name="CodePostalStagiaire" Type="nchar" Nullable="true" MaxLength="5" />
     <Property Name="NbreNotes" Type="int" Nullable="true" />
     <Property Name="PointsNotes" Type="decimal" Nullable="true" Precision="6" Scale="2" />
-    <Property Name="Stages_Idsection" Type="nchar" MaxLength="5" Nullable="false" />
+    <Property Name="Sections_Idsection" Type="nchar" MaxLength="5" Nullable="false" />
   </EntityType>
-  <EntityType Name="StagesSet">
+  <EntityType Name="SectionsSet">
     <Key>
       <PropertyRef Name="Idsection" />
     </Key>
@@ -61,15 +61,15 @@
     <Property Name="RemuAfpa" Type="bit" Nullable="false" />
     <Property Name="NumOsia" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="StagesStagiaires">
-    <End Role="Stages" Type="Formations.Store.StagesSet" Multiplicity="1" />
+  <Association Name="SectionsStagiaires">
+    <End Role="Sections" Type="Formations.Store.SectionsSet" Multiplicity="1" />
     <End Role="Stagiaires" Type="Formations.Store.StagiairesSet" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Stages">
+      <Principal Role="Sections">
         <PropertyRef Name="Idsection" />
       </Principal>
       <Dependent Role="Stagiaires">
-        <PropertyRef Name="Stages_Idsection" />
+        <PropertyRef Name="Sections_Idsection" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -183,7 +183,7 @@
     </EntitySetMapping>
     <EntitySetMapping Name="SectionsSet">
       <EntityTypeMapping TypeName="IsTypeOf(Formations.Sections)">
-        <MappingFragment StoreEntitySet="StagesSet">
+        <MappingFragment StoreEntitySet="SectionsSet">
           <ScalarProperty Name="Idsection" ColumnName="Idsection" />
           <ScalarProperty Name="NomSection" ColumnName="NomSection" />
           <ScalarProperty Name="DateDebut" ColumnName="DateDebut" />
@@ -191,6 +191,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <AssociationSetMapping Name="SectionsStagiaires" TypeName="Formations.SectionsStagiaires" StoreEntitySet="StagiairesSet">
+      <EndProperty Name="Sections">
+        <ScalarProperty Name="Idsection" ColumnName="Sections_Idsection" />
+      </EndProperty>
+      <EndProperty Name="Stagiaires">
+        <ScalarProperty Name="NumOsia" ColumnName="NumOsia" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

@@ -20,7 +20,7 @@ namespace Exo9
         }
     
         internal string Idsection { get; set; }
-        internal string NomSection { get; set; }
+        public string NomSection { get; set; }
         internal Nullable<System.DateTime> DateDebut { get; set; }
         internal System.DateTime DateFin { get; set; }
     

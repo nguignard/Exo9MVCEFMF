@@ -154,3 +154,14 @@ GO
 -- --------------------------------------------------
 -- Script has ended
 -- --------------------------------------------------
+
+
+
+
+INSERT INTO SectionsSet Values (1,"Sect",2017-01-01,2017-02-02);
+INSERT INTO StagiairesSet Values (1,'ORION','Jeremy','rue',"ville",'78600',3,20,1);
+INSERT INTO StagiairesSet Values (2,'RIR','Julien','ruejuju',"villejuju",'78600',30,3,1);
+
+INSERT INTO StagiairesSet_StagiaireDE Values (0,1);
+
+INSERT INTO StagiairesSet_StagiaireCIF Values ('cifJulien','CDI',2);
