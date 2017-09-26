@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace Exo9
 {
     /// <summary>
     /// stagiaire spécialisé statut CIF
     /// </summary>
+    /// 
+    [DataContract]
     public class MStagiaireCIF : MStagiaire
     {
         /// <summary>
@@ -46,6 +49,8 @@ namespace Exo9
         /// <summary>
         /// obtient ou définit nom Fongecif
         /// </summary>
+        /// 
+        [DataMember]
         public String Fongecif
         {
             get
@@ -66,6 +71,8 @@ namespace Exo9
         /// <summary>
         /// obtient ou définit type CIF (CDD, CDI, TT)
         /// </summary>
+        /// 
+        [DataMember]
         public String TypeCif
         {
             get

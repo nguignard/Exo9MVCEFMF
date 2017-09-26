@@ -1,12 +1,19 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace Exo9
 {
     /// <summary>
     /// classe des stagiaires
     /// </summary>
+    /// 
+    [Serializable]
+    [DataContract]
+    [KnownType(typeof(MStagiaireCIF))]
+    [KnownType(typeof(MStagiaireDE))]
+
     public class MStagiaire // abstract
     {
 
@@ -51,9 +58,12 @@ namespace Exo9
         /// <summary>
         /// obtient le numéro OSIA du stagiaire
         /// </summary>
+        /// 
+        [DataMember]
         public Int32 NumOsia
         {
             get { return numOsia; }
+            private set { this.numOsia = value; }
         }
 
         /// <summary>
@@ -64,6 +74,8 @@ namespace Exo9
         /// <summary>
         /// obtient ou définit le nom du stagiaire (forcé en majuscules)
         /// </summary>
+        /// 
+        [DataMember]
         public String Nom
         {
             get { return nomStagiaire; } // en lecture, retourne la var privée
@@ -81,6 +93,8 @@ namespace Exo9
         /// <summary>
         /// obtient ou définit le prénom de stagiaire (forcé en minuscules)
         /// </summary>
+        /// 
+        [DataMember]
         public String Prenom
         {
             get { return prenomStagiaire; } // en lecture, retourne la var privée
@@ -95,6 +109,8 @@ namespace Exo9
         /// <summary>
         /// obtient ou définit rue et numéro, le format est libre
         /// </summary>
+        /// 
+        [DataMember]
         public String Rue
         {
             get { return rue; }
@@ -109,6 +125,8 @@ namespace Exo9
         /// <summary>
         /// obtient ou définit le nom de la ville (forcé en majuscules)
         /// </summary>
+        /// 
+        [DataMember]
         public String Ville
         {
             get { return villeStagiaire; } // en lecture, retourne la var privée
@@ -119,12 +137,14 @@ namespace Exo9
         /// le code postal, l'appelant devra prendre garde à passer 
         /// un code postal valide à 5 chiffres
         /// </summary>
-        protected String codePostalStagiaire;     
+        protected String codePostalStagiaire;
 
         /// <summary>
         /// obtient ou définit le code postal (contrôle : 5 car tous chiffres)
         /// </summary>
         /// <exception cref="Exception">le code postal n'est pas constitué de 5 chiffres</exception>
+        /// 
+        [DataMember]
         public  String CodePostal          
         {
             get { return codePostalStagiaire; } // en lecture, retourne la var privée
@@ -169,9 +189,12 @@ namespace Exo9
         /// <summary>
         /// obtient le nombre de notes du stagiaire
         /// </summary>
+        /// 
+        [DataMember]
         public Int32? NbreNotes
         {
             get { return nbreNotes; }
+            private set { this.nbreNotes = value; }
         }
 
         /// <summary>
@@ -182,9 +205,12 @@ namespace Exo9
         /// <summary>
         /// obtient le nombre de points du stagiaire
         /// </summary>
+        /// 
+        [DataMember]
         public Double PointsNotes
         {
             get { return pointsNotes; }
+            private set { this.pointsNotes = value; }
         } 
         
         /// <summary>

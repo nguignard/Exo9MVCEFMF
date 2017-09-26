@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Data;
+using System.Runtime.Serialization;
 
 
 namespace Exo9
@@ -9,6 +10,8 @@ namespace Exo9
     /// <summary>
     /// classe des sections de stagiaires
     /// </summary>
+     [Serializable]
+     [DataContract]
     public class MSection
     {
 
@@ -21,20 +24,26 @@ namespace Exo9
         /// <summary>
         /// obtient le code de la section (lecture seule)
         /// </summary>
+        [DataMember]
         public String CodeSection
         {
             get { return leCodeSection; }
+            private set { this.leCodeSection = value; }
         }
 
         /// <summary>
         /// libellé de la section
         /// (non initialisé dans le constructeur)
         /// </summary>
+        /// 
+        
         private String leNomSection;
 
         /// <summary>
         /// obtient ou définit le libellé de la section
         /// </summary>
+        /// 
+        [DataMember]
         public String NomSection
         {
             get { return leNomSection; }
@@ -49,6 +58,8 @@ namespace Exo9
         /// <summary>
         /// obtient ou définit  la date de début de la formation
         /// </summary>
+        /// 
+        [DataMember]
         public DateTime? DebutFormation
         {
             get
@@ -69,6 +80,7 @@ namespace Exo9
         /// <summary>
         /// obtient ou définit la date de fin de la formation
         /// </summary>
+          [DataMember]
         public DateTime? FinFormation
         {
             get
@@ -221,6 +233,28 @@ namespace Exo9
             // retourne la référence à la datatable
             return this.dtStagiaires;
         }
+
+
+
+        /// <summary> 
+        /// /// générer et retourner une Liste des stagiaires de la collection /// 
+        /// </summary> 
+        /// /// <returns>une List des stagiaires de la collection</returns> 
+
+        public List<MStagiaire> StagiairesToList()
+        {
+            // boucle de remplissage de la listee à partir de la collection
+            List<MStagiaire> laListe = new List<MStagiaire>();
+            foreach (MStagiaire unStagiaire in this.lesStagiaires.Values)
+            {
+                laListe.Add(unStagiaire);
+            }
+            // retourne la liste   
+            return laListe;
+        }
+
+
+
 
     }
 }

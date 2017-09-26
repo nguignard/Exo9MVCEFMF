@@ -138,6 +138,7 @@ namespace Exo9
             // retourne la référence à la datatable
             return this.dtSections;
         }
+        
 
     }
 }

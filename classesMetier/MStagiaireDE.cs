@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace Exo9
 {
     /// <summary>
     /// stagiaire spécialisé statut Demandeur d'emploi
     /// </summary>
+    /// 
+    [DataContract]
     public class MStagiaireDE : MStagiaire
     {
         /// <summary>
@@ -46,6 +49,8 @@ namespace Exo9
         /// <summary>
         /// obtient ou définit Rémuneration par l'Afpa
         /// </summary>
+        /// 
+        [DataMember]
         public Boolean RemuAfpa
         {
             get

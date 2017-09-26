@@ -14,9 +14,15 @@ namespace MetierServicesApp
      [ServiceContract]
     public interface IServiceStagiaires
     {
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         [OperationContract]
         string GetData(int value);
+
+
 
         [OperationContract]
         MSection GetSection(string codeCollection);
