@@ -82,6 +82,16 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassesDAO\ClassesDAO.csproj">
+      <Project>{e3efdf51-4789-4347-88ef-84716651bef6}</Project>
+      <Name>ClassesDAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\classesMetier\classesMetier.csproj">
+      <Project>{e99daec8-8e5e-4cfb-a730-fcc6cd8cd849}</Project>
+      <Name>classesMetier</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
