@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 09/26/2017 09:35:00
--- Generated from EDMX file: C:\Users\CDI14\Documents\Exo9Service\ClassesDAO\Formations.edmx
+-- Date Created: 09/27/2017 14:37:16
+-- Generated from EDMX file: C:\Users\CDI14\source\repos\Exo9MVC-REST\Serveur\ClassesDAO\Formations.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,8 +17,8 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_StagesStagiaires]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[StagiairesSet] DROP CONSTRAINT [FK_StagesStagiaires];
+IF OBJECT_ID(N'[dbo].[FK_SectionsStagiaires]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[StagiairesSet] DROP CONSTRAINT [FK_SectionsStagiaires];
 GO
 IF OBJECT_ID(N'[dbo].[FK_StagiaireCIF_inherits_Stagiaires]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[StagiairesSet_StagiaireCIF] DROP CONSTRAINT [FK_StagiaireCIF_inherits_Stagiaires];
@@ -34,8 +34,8 @@ GO
 IF OBJECT_ID(N'[dbo].[StagiairesSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[StagiairesSet];
 GO
-IF OBJECT_ID(N'[dbo].[StagesSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[StagesSet];
+IF OBJECT_ID(N'[dbo].[SectionsSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SectionsSet];
 GO
 IF OBJECT_ID(N'[dbo].[StagiairesSet_StagiaireCIF]', 'U') IS NOT NULL
     DROP TABLE [dbo].[StagiairesSet_StagiaireCIF];
