@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Les informations générales relatives à un assembly dépendent de
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
-[assembly: AssemblyTitle("DAO1")]
+[assembly: AssemblyTitle("DAO")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DAO1")]
+[assembly: AssemblyProduct("DAO")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Le GUID suivant est pour l'ID de la typelib si ce projet est exposé à COM
-[assembly: Guid("b47b7f0c-867b-4df1-ade5-59432f7e92c4")]
+[assembly: Guid("a9b64bb6-e420-4ff1-ae8e-48bce4c77a33")]
 
 // Les informations de version pour un assembly se composent des quatre valeurs suivantes :
 //

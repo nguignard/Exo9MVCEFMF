@@ -10,56 +10,50 @@ namespace Exo9
     /// </summary>
     public static class MStagiaireDAOEFStatic
     {
-        
+
         /// <summary>
         /// instancie les objets MStagiaires spécialisés correspondants aux Entities du dbSet
         /// </summary>
         /// <param name="laSection">la ref de la section qui gère la collection de ces stagiaires</param>
         public static void InstancieStagiairesSection(MSection laSection)
         {
-            // instancier le dbContext au besoin
-            if(DonneesDAO.DbContextFormation == null) DonneesDAO.DbContextFormation = new FormationsContainer();
 
-            var query = from a in DonneesDAO.DbContextFormation.StagiairesSet
-                        where a.Sections.Idsection == laSection.CodeSection
-                        select a;
-            // ref d'objet générique (pour la collection)
             MStagiaire leStagiaire;
             // parcourt les lignes de la requête
-            foreach (Stagiaires item in query)
+            foreach (FormationService.MStagiaire item in DonneesDAO.Client.GetStagiairesSection(laSection.CodeSection))
             {
                 // instancie et renseigne l'objet MStagiaire spécialisé 
-                if (item is StagiaireCIF)
+                if (item is FormationService.MStagiaireCIF)
                 {
                     // cas d'un CIF : objet MStagiaireCIF
                     leStagiaire = new MStagiaireCIF(item.NumOsia,
-                        item.NomStagiaire.Trim(), 
-                        item.PrenomStagiaire.Trim(), 
-                        item.rueStagiaire, 
-                        item.VilleStagiaire.Trim(), 
-                        item.CodePostalStagiaire,
-                        ((StagiaireCIF)item).Fongecif,
-                        ((StagiaireCIF)item).TypeCIF.Trim()
+                        item.Nom.Trim(),
+                        item.Prenom.Trim(),
+                        item.Rue,
+                        item.Ville.Trim(),
+                        item.CodePostal,
+                        ((FormationService.MStagiaireCIF)item).Fongecif,
+                        ((FormationService.MStagiaireCIF)item).TypeCif.Trim()
                     );
                 }
                 else
                 {
                     // cas d'un DE : objet MStagiaireDE
                     leStagiaire = new MStagiaireDE(item.NumOsia,
-                        item.NomStagiaire.Trim(),
-                        item.PrenomStagiaire.Trim(),
-                        item.rueStagiaire,
-                        item.VilleStagiaire.Trim(),
-                        item.CodePostalStagiaire.Trim(),
-                        ((StagiaireDE)item).RemuAfpa
+                        item.Nom.Trim(),
+                        item.Prenom.Trim(),
+                        item.Rue,
+                        item.Ville.Trim(),
+                        item.CodePostal.Trim(),
+                        ((FormationService.MStagiaireDE)item).RemuAfpa
                     );
                 }
 
                 // affecter points et notes
                 // on ne peut affecter directement Pointsnotes et NbreNotes
                 // dans MStagiaire que si le demandeur est de ce type MStagiaireDAOEFStatic
-                leStagiaire.SetPoints(Convert.ToDouble(item.PointsNotes), (int)item.NbreNotes, typeof(MStagiaireDAOEFStatic).ToString()); 
-                
+                leStagiaire.SetPoints(Convert.ToDouble(item.PointsNotes), (int)item.NbreNotes, typeof(FormationService.MStagiaireDE).ToString());
+
                 // ajoute le Stagiaire à la collection de la section
                 laSection.Ajouter(leStagiaire);
             }
@@ -72,44 +66,49 @@ namespace Exo9
         /// <param name="unCodeSection">identifiant de sa section</param>
         public static void InsereStagiaire(MStagiaire unStagiaire, MSection uneSection)
         {
-            // instancier le dbContext au besoin
-            if (DonneesDAO.DbContextFormation == null) DonneesDAO.DbContextFormation = new FormationsContainer();
 
-            // rechercher l'Entity Section
-            Sections laSection = DonneesDAO.DbContextFormation.SectionsSet.Find(uneSection.CodeSection);
-            // instancie un Entity et le renseigne à partir du MStagiaire reçu
-            Stagiaires unStagiaireEF = null; // pour compilateur
+            FormationService.MStagiaire unServiceStagiaire = null;
+            FormationService.MSection laSection = DonneesDAO.Client.GetSection(uneSection.CodeSection);
+
             if (unStagiaire is MStagiaireCIF)
             {
+                unServiceStagiaire = new FormationService.MStagiaireCIF();
+                unServiceStagiaire.NumOsia = unStagiaire.NumOsia;
 
-                unStagiaireEF = new StagiaireCIF(unStagiaire.NumOsia, unStagiaire.Nom, unStagiaire.Prenom, 
-                    unStagiaire.Rue, unStagiaire.Ville, unStagiaire.CodePostal, 
-                    unStagiaire.NbreNotes, Convert.ToDecimal(unStagiaire.PointsNotes), laSection, 
-                    ((MStagiaireCIF)unStagiaire).Fongecif, ((MStagiaireCIF)unStagiaire).TypeCif);
+                unServiceStagiaire.Nom = unStagiaire.Nom;
+                unServiceStagiaire.Prenom = unStagiaire.Prenom;
+                unServiceStagiaire.Rue = unStagiaire.Rue;
+                unServiceStagiaire.Ville = unStagiaire.Ville;
+                unServiceStagiaire.CodePostal = unStagiaire.CodePostal;
+                unServiceStagiaire.NbreNotes = unStagiaire.NbreNotes;
+                unServiceStagiaire.PointsNotes = Convert.ToDouble(unStagiaire.PointsNotes);
+                ((FormationService.MStagiaireCIF)unServiceStagiaire).Fongecif = ((MStagiaireCIF)unStagiaire).Fongecif;
+                ((FormationService.MStagiaireCIF)unServiceStagiaire).TypeCif = ((MStagiaireCIF)unStagiaire).TypeCif;
+            }
 
-            }            
-            
-            
             else
             {
-                // cas d'un DE
-                unStagiaireEF = new StagiaireDE(unStagiaire.NumOsia, unStagiaire.Nom, unStagiaire.Prenom,
-                    unStagiaire.Rue, unStagiaire.Ville, unStagiaire.CodePostal,
-                    unStagiaire.NbreNotes, Convert.ToDecimal(unStagiaire.PointsNotes), laSection,
-                    ((MStagiaireDE)unStagiaire).RemuAfpa);
+                unServiceStagiaire = new FormationService.MStagiaireDE();
+                unServiceStagiaire.NumOsia = unStagiaire.NumOsia;
+                unServiceStagiaire.Nom = unStagiaire.Nom;
+                unServiceStagiaire.Prenom = unStagiaire.Prenom;
+                unServiceStagiaire.Rue = unStagiaire.Rue;
+                unServiceStagiaire.Ville = unStagiaire.Ville;
+                unServiceStagiaire.CodePostal = unStagiaire.CodePostal;
+                unServiceStagiaire.NbreNotes = unStagiaire.NbreNotes;
+                unServiceStagiaire.PointsNotes = Convert.ToDouble(unStagiaire.PointsNotes);
+                ((FormationService.MStagiaireDE)unServiceStagiaire).RemuAfpa = ((MStagiaireDE)unStagiaire).RemuAfpa;
             }
 
-            try
+            // ajoute l'Entity au dbSet du dbContext
+            string retour = DonneesDAO.Client.AddStagiaire(unServiceStagiaire, laSection);
+
+            if (retour != "")
             {
-                // ajoute l'Entity au dbSet du dbContext
-                DonneesDAO.DbContextFormation.StagiairesSet.Add(unStagiaireEF);
-                // déclenche la MAJ sur BDD 
-                DonneesDAO.DbContextFormation.SaveChanges();
+                throw new Exception(retour);
             }
-            catch (Exception ex) // a ce niveau, erreur possible en cas de doublon
-            {                    // avec un  autre stagiaire déjà chargé en mémoire
-                throw ex;        // ou erreur d'accès à la BDD
-            }
+
+
         }
 
         /// <summary>
@@ -118,44 +117,20 @@ namespace Exo9
         /// <param name="unStagiaire">la ref à l'objet Mstagiaire qui a subi des modifications</param>
         public static void ModifieStagiaire(MStagiaire unStagiaire)
         {
-            // instancier le dbContext au besoin
-            if (DonneesDAO.DbContextFormation == null) DonneesDAO.DbContextFormation = new FormationsContainer();
+            FormationService.MStagiaire unServiceStagiaire = null;
 
-            // recherche l'Entity et la renseigne à partir du MStagiaire reçu
-            Stagiaires leStagiaire = DonneesDAO.DbContextFormation.StagiairesSet.Find(unStagiaire.NumOsia);
-            // renseigne les colonnes à partir de l’objet MStagiaire reçu
-            
-            leStagiaire.NomStagiaire = unStagiaire.Nom;
-            leStagiaire.PrenomStagiaire = unStagiaire.Prenom;
-            leStagiaire.rueStagiaire = unStagiaire.Rue;
-            leStagiaire.VilleStagiaire = unStagiaire.Ville;
-            leStagiaire.CodePostalStagiaire = unStagiaire.CodePostal;
-            leStagiaire.PointsNotes = (decimal?)unStagiaire.PointsNotes;
-            leStagiaire.NbreNotes = unStagiaire.NbreNotes;
-            // champs spécifiques dans la table en fonction du type MStagiaire spécialisé : NB : non modifable actuellement sur le form
-            if (leStagiaire is StagiaireCIF)
+            if (unStagiaire is MStagiaireCIF)
             {
-                // cas d'un CIF
-                ((StagiaireCIF)leStagiaire).Fongecif = ((MStagiaireCIF)unStagiaire).Fongecif;
-                ((StagiaireCIF)leStagiaire).TypeCIF = ((MStagiaireCIF)unStagiaire).TypeCif;
+
+                unServiceStagiaire = new FormationService.MStagiaireCIF(); unServiceStagiaire.NumOsia = unStagiaire.NumOsia; unServiceStagiaire.Nom = unStagiaire.Nom; unServiceStagiaire.Prenom = unStagiaire.Prenom; unServiceStagiaire.Rue = unStagiaire.Rue; unServiceStagiaire.Ville = unStagiaire.Ville; unServiceStagiaire.CodePostal = unStagiaire.CodePostal; unServiceStagiaire.NbreNotes = unStagiaire.NbreNotes; unServiceStagiaire.PointsNotes = unStagiaire.PointsNotes; ((FormationService.MStagiaireCIF)unServiceStagiaire).Fongecif = ((MStagiaireCIF)unStagiaire).Fongecif; ((FormationService.MStagiaireCIF)unServiceStagiaire).TypeCif = ((MStagiaireCIF)unStagiaire).TypeCif;
+
             }
             else
-            {
-                // cas d'un DE
-                ((StagiaireDE)leStagiaire).RemuAfpa = ((MStagiaireDE)unStagiaire).RemuAfpa;
-            }
-
-            try
-            {
-                
-                // déclenche la MAJ sur BDD par le dbContext
-                DonneesDAO.DbContextFormation.SaveChanges();
-            }
-            catch (Exception ex) // a ce niveau, erreur possible en cas de doublon
-            {                    // avec un  autre stagiaire déjà chargé en mémoire
-                throw ex;        // ou erreur d'accès à la BDD
-            }
+            { unServiceStagiaire = new FormationService.MStagiaireDE(); unServiceStagiaire.NumOsia = unStagiaire.NumOsia; unServiceStagiaire.Nom = unStagiaire.Nom; unServiceStagiaire.Prenom = unStagiaire.Prenom; unServiceStagiaire.Rue = unStagiaire.Rue; unServiceStagiaire.Ville = unStagiaire.Ville; unServiceStagiaire.CodePostal = unStagiaire.CodePostal; unServiceStagiaire.NbreNotes = unStagiaire.NbreNotes; unServiceStagiaire.PointsNotes = unStagiaire.PointsNotes; ((FormationService.MStagiaireDE)unServiceStagiaire).RemuAfpa = ((MStagiaireDE)unStagiaire).RemuAfpa; }
+            string retour = DonneesDAO.Client.UpdateStagiaire(unServiceStagiaire); if (retour != "") { throw new Exception(retour); }
         }
+
+
 
         /// <summary>
         /// supprime un stagiaire de la table Stagiaires de la BDD
@@ -163,23 +138,16 @@ namespace Exo9
         /// <param name="uneCleStagiaire">NumOSIA du stagiaire à supprimer</param>
         public static void SupprimeStagiaire(Int32 uneCleStagiaire)
         {
-            // instancier le dbContext au besoin
-            if (DonneesDAO.DbContextFormation == null) DonneesDAO.DbContextFormation = new FormationsContainer();
-
-            // recherche l'Entity correspondant à la clé stagiaire fournie
-            Stagiaires leStagiaire = DonneesDAO.DbContextFormation.StagiairesSet.Find(uneCleStagiaire);
-            // supprime l'Entity du dbContext
-            DonneesDAO.DbContextFormation.StagiairesSet.Remove(leStagiaire);
-            // déclenche la MAJ sur SQL Server par le dbContext
-            DonneesDAO.DbContextFormation.SaveChanges();
+            DonneesDAO.Client.DeleteStagiaire(uneCleStagiaire);
         }
 
         public static MStagiaire RestitueStagiaire()
         {
             return null; //TODO
         }
-        
+
     }
-
-
 }
+
+
+

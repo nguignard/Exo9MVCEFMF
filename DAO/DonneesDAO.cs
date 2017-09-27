@@ -10,7 +10,7 @@ namespace Exo9
         /// <summary>
         /// dbContext Entity Framework
         /// </summary>
-        public static FormationsContainer DbContextFormation; 
+        public static FormationService.ServiceStagiaireClient Client = new FormationService.ServiceStagiaireClient(); 
         
     }
 }

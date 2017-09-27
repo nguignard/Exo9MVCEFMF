@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B47B7F0C-867B-4DF1-ADE5-59432F7E92C4}</ProjectGuid>
+    <ProjectGuid>{A9B64BB6-E420-4FF1-AE8E-48BCE4C77A33}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DAO1</RootNamespace>
-    <AssemblyName>DAO1</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>Exo9</RootNamespace>
+    <AssemblyName>DAO</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -53,32 +54,26 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\classesMetier\classesMetier.csproj">
+      <Project>{e99daec8-8e5e-4cfb-a730-fcc6cd8cd849}</Project>
+      <Name>classesMetier</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Connected Services\FormationService\DAO1.FormationService.MSection.datasource">
+    <None Include="Connected Services\FormationService\Exo9.FormationService.MSection.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\FormationService\DAO1.FormationService.MStagiaire.datasource">
+    <None Include="Connected Services\FormationService\Exo9.FormationService.MStagiaire.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\FormationService\ServiceStagiaire.wsdl" />
-    <None Include="Connected Services\FormationService\ServiceStagiaire.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\FormationService\ServiceStagiaire1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\FormationService\ServiceStagiaire2.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\FormationService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\FormationService\ServiceStagiaire.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\FormationService\configuration91.svcinfo" />

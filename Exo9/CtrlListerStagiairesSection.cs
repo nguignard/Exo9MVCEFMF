@@ -165,7 +165,7 @@ namespace Exo9
             //Donnees.Sections.Ajouter(this.laSection); 
             
             // chargement section depuis la BDD
-            this.laSection = MSectionDAOEFStatic.RestitueSection("CDI");
+            this.laSection = MSectionDAOEFStatic.RestitueSection("1");
             Donnees.Sections.Ajouter(this.laSection);
 
             // chargement et instanciation des données Stagiaires de cette section depuis la BDD

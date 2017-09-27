@@ -136,7 +136,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="ClassDiagramPrésentationCtrl.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -153,6 +155,10 @@
     <ProjectReference Include="..\classesMetier\classesMetier.csproj">
       <Project>{E99DAEC8-8E5E-4CFB-A730-FCC6CD8CD849}</Project>
       <Name>classesMetier</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{a9b64bb6-e420-4ff1-ae8e-48bce4c77a33}</Project>
+      <Name>DAO</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

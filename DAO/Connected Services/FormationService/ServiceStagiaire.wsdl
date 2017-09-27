@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ServiceStagiaire" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/Exo9" />
+      <xs:element name="GetData">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="value" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetDataResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetDataResult" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSection">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="codeCollection" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSectionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Exo9" minOccurs="0" name="GetSectionResult" nillable="true" type="q1:MSection" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetStagiairesSection">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="codeSection" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetStagiairesSectionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Exo9" minOccurs="0" name="GetStagiairesSectionResult" nillable="true" type="q2:ArrayOfMStagiaire" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AddStagiaire">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Exo9" minOccurs="0" name="newStagiaire" nillable="true" type="q3:MStagiaire" />
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Exo9" minOccurs="0" name="laSection" nillable="true" type="q4:MSection" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AddStagiaireResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="AddStagiaireResult" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateStagiaire">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Exo9" minOccurs="0" name="leStagiaire" nillable="true" type="q5:MStagiaire" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateStagiaireResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="UpdateStagiaireResult" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteStagiaire">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="laClefStagiaire" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteStagiaireResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="DeleteStagiaireResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Exo9" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Exo9" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="MSection">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CodeSection" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DebutFormation" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="FinFormation" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="NomSection" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="MSection" nillable="true" type="tns:MSection" />
+      <xs:complexType name="ArrayOfMStagiaire">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="MStagiaire" nillable="true" type="tns:MStagiaire" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfMStagiaire" nillable="true" type="tns:ArrayOfMStagiaire" />
+      <xs:complexType name="MStagiaire">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CodePostal" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NbreNotes" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Nom" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NumOsia" type="xs:int" />
+          <xs:element minOccurs="0" name="PointsNotes" type="xs:double" />
+          <xs:element minOccurs="0" name="Prenom" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Rue" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Ville" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="MStagiaire" nillable="true" type="tns:MStagiaire" />
+      <xs:complexType name="MStagiaireCIF">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:MStagiaire">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Fongecif" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="TypeCif" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="MStagiaireCIF" nillable="true" type="tns:MStagiaireCIF" />
+      <xs:complexType name="MStagiaireDE">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:MStagiaire">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="RemuAfpa" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="MStagiaireDE" nillable="true" type="tns:MStagiaireDE" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="IServiceStagiaire_GetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetData" />
+  </wsdl:message>
+  <wsdl:message name="IServiceStagiaire_GetData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceStagiaire_GetSection_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSection" />
+  </wsdl:message>
+  <wsdl:message name="IServiceStagiaire_GetSection_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceStagiaire_GetStagiairesSection_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStagiairesSection" />
+  </wsdl:message>
+  <wsdl:message name="IServiceStagiaire_GetStagiairesSection_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStagiairesSectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceStagiaire_AddStagiaire_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddStagiaire" />
+  </wsdl:message>
+  <wsdl:message name="IServiceStagiaire_AddStagiaire_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddStagiaireResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceStagiaire_UpdateStagiaire_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateStagiaire" />
+  </wsdl:message>
+  <wsdl:message name="IServiceStagiaire_UpdateStagiaire_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateStagiaireResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceStagiaire_DeleteStagiaire_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteStagiaire" />
+  </wsdl:message>
+  <wsdl:message name="IServiceStagiaire_DeleteStagiaire_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteStagiaireResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IServiceStagiaire">
+    <wsdl:operation name="GetData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceStagiaire/GetData" message="tns:IServiceStagiaire_GetData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceStagiaire/GetDataResponse" message="tns:IServiceStagiaire_GetData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSection">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceStagiaire/GetSection" message="tns:IServiceStagiaire_GetSection_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceStagiaire/GetSectionResponse" message="tns:IServiceStagiaire_GetSection_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStagiairesSection">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceStagiaire/GetStagiairesSection" message="tns:IServiceStagiaire_GetStagiairesSection_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceStagiaire/GetStagiairesSectionResponse" message="tns:IServiceStagiaire_GetStagiairesSection_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddStagiaire">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceStagiaire/AddStagiaire" message="tns:IServiceStagiaire_AddStagiaire_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceStagiaire/AddStagiaireResponse" message="tns:IServiceStagiaire_AddStagiaire_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStagiaire">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceStagiaire/UpdateStagiaire" message="tns:IServiceStagiaire_UpdateStagiaire_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceStagiaire/UpdateStagiaireResponse" message="tns:IServiceStagiaire_UpdateStagiaire_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteStagiaire">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceStagiaire/DeleteStagiaire" message="tns:IServiceStagiaire_DeleteStagiaire_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceStagiaire/DeleteStagiaireResponse" message="tns:IServiceStagiaire_DeleteStagiaire_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IServiceStagiaire" type="tns:IServiceStagiaire">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://tempuri.org/IServiceStagiaire/GetData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSection">
+      <soap:operation soapAction="http://tempuri.org/IServiceStagiaire/GetSection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStagiairesSection">
+      <soap:operation soapAction="http://tempuri.org/IServiceStagiaire/GetStagiairesSection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddStagiaire">
+      <soap:operation soapAction="http://tempuri.org/IServiceStagiaire/AddStagiaire" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStagiaire">
+      <soap:operation soapAction="http://tempuri.org/IServiceStagiaire/UpdateStagiaire" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteStagiaire">
+      <soap:operation soapAction="http://tempuri.org/IServiceStagiaire/DeleteStagiaire" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceStagiaire">
+    <wsdl:port name="BasicHttpBinding_IServiceStagiaire" binding="tns:BasicHttpBinding_IServiceStagiaire">
+      <soap:address location="http://localhost:4331/ServiceStagiaire.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DAO1.FormationService {
+namespace Exo9.FormationService {
     using System.Runtime.Serialization;
     using System;
     
@@ -110,8 +110,8 @@ namespace DAO1.FormationService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="MStagiaire", Namespace="http://schemas.datacontract.org/2004/07/Exo9")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(DAO1.FormationService.MStagiaireCIF))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(DAO1.FormationService.MStagiaireDE))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Exo9.FormationService.MStagiaireCIF))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Exo9.FormationService.MStagiaireDE))]
     public partial class MStagiaire : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -269,7 +269,7 @@ namespace DAO1.FormationService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="MStagiaireCIF", Namespace="http://schemas.datacontract.org/2004/07/Exo9")]
     [System.SerializableAttribute()]
-    public partial class MStagiaireCIF : DAO1.FormationService.MStagiaire {
+    public partial class MStagiaireCIF : Exo9.FormationService.MStagiaire {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FongecifField;
@@ -308,7 +308,7 @@ namespace DAO1.FormationService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="MStagiaireDE", Namespace="http://schemas.datacontract.org/2004/07/Exo9")]
     [System.SerializableAttribute()]
-    public partial class MStagiaireDE : DAO1.FormationService.MStagiaire {
+    public partial class MStagiaireDE : Exo9.FormationService.MStagiaire {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool RemuAfpaField;
@@ -338,28 +338,28 @@ namespace DAO1.FormationService {
         System.Threading.Tasks.Task<string> GetDataAsync(int value);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceStagiaire/GetSection", ReplyAction="http://tempuri.org/IServiceStagiaire/GetSectionResponse")]
-        DAO1.FormationService.MSection GetSection(string codeCollection);
+        Exo9.FormationService.MSection GetSection(string codeCollection);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceStagiaire/GetSection", ReplyAction="http://tempuri.org/IServiceStagiaire/GetSectionResponse")]
-        System.Threading.Tasks.Task<DAO1.FormationService.MSection> GetSectionAsync(string codeCollection);
+        System.Threading.Tasks.Task<Exo9.FormationService.MSection> GetSectionAsync(string codeCollection);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceStagiaire/GetStagiairesSection", ReplyAction="http://tempuri.org/IServiceStagiaire/GetStagiairesSectionResponse")]
-        DAO1.FormationService.MStagiaire[] GetStagiairesSection(string codeSection);
+        Exo9.FormationService.MStagiaire[] GetStagiairesSection(string codeSection);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceStagiaire/GetStagiairesSection", ReplyAction="http://tempuri.org/IServiceStagiaire/GetStagiairesSectionResponse")]
-        System.Threading.Tasks.Task<DAO1.FormationService.MStagiaire[]> GetStagiairesSectionAsync(string codeSection);
+        System.Threading.Tasks.Task<Exo9.FormationService.MStagiaire[]> GetStagiairesSectionAsync(string codeSection);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceStagiaire/AddStagiaire", ReplyAction="http://tempuri.org/IServiceStagiaire/AddStagiaireResponse")]
-        string AddStagiaire(DAO1.FormationService.MStagiaire newStagiaire, DAO1.FormationService.MSection laSection);
+        string AddStagiaire(Exo9.FormationService.MStagiaire newStagiaire, Exo9.FormationService.MSection laSection);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceStagiaire/AddStagiaire", ReplyAction="http://tempuri.org/IServiceStagiaire/AddStagiaireResponse")]
-        System.Threading.Tasks.Task<string> AddStagiaireAsync(DAO1.FormationService.MStagiaire newStagiaire, DAO1.FormationService.MSection laSection);
+        System.Threading.Tasks.Task<string> AddStagiaireAsync(Exo9.FormationService.MStagiaire newStagiaire, Exo9.FormationService.MSection laSection);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceStagiaire/UpdateStagiaire", ReplyAction="http://tempuri.org/IServiceStagiaire/UpdateStagiaireResponse")]
-        string UpdateStagiaire(DAO1.FormationService.MStagiaire leStagiaire);
+        string UpdateStagiaire(Exo9.FormationService.MStagiaire leStagiaire);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceStagiaire/UpdateStagiaire", ReplyAction="http://tempuri.org/IServiceStagiaire/UpdateStagiaireResponse")]
-        System.Threading.Tasks.Task<string> UpdateStagiaireAsync(DAO1.FormationService.MStagiaire leStagiaire);
+        System.Threading.Tasks.Task<string> UpdateStagiaireAsync(Exo9.FormationService.MStagiaire leStagiaire);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceStagiaire/DeleteStagiaire", ReplyAction="http://tempuri.org/IServiceStagiaire/DeleteStagiaireResponse")]
         bool DeleteStagiaire(int laClefStagiaire);
@@ -369,12 +369,12 @@ namespace DAO1.FormationService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IServiceStagiaireChannel : DAO1.FormationService.IServiceStagiaire, System.ServiceModel.IClientChannel {
+    public interface IServiceStagiaireChannel : Exo9.FormationService.IServiceStagiaire, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServiceStagiaireClient : System.ServiceModel.ClientBase<DAO1.FormationService.IServiceStagiaire>, DAO1.FormationService.IServiceStagiaire {
+    public partial class ServiceStagiaireClient : System.ServiceModel.ClientBase<Exo9.FormationService.IServiceStagiaire>, Exo9.FormationService.IServiceStagiaire {
         
         public ServiceStagiaireClient() {
         }
@@ -403,35 +403,35 @@ namespace DAO1.FormationService {
             return base.Channel.GetDataAsync(value);
         }
         
-        public DAO1.FormationService.MSection GetSection(string codeCollection) {
+        public Exo9.FormationService.MSection GetSection(string codeCollection) {
             return base.Channel.GetSection(codeCollection);
         }
         
-        public System.Threading.Tasks.Task<DAO1.FormationService.MSection> GetSectionAsync(string codeCollection) {
+        public System.Threading.Tasks.Task<Exo9.FormationService.MSection> GetSectionAsync(string codeCollection) {
             return base.Channel.GetSectionAsync(codeCollection);
         }
         
-        public DAO1.FormationService.MStagiaire[] GetStagiairesSection(string codeSection) {
+        public Exo9.FormationService.MStagiaire[] GetStagiairesSection(string codeSection) {
             return base.Channel.GetStagiairesSection(codeSection);
         }
         
-        public System.Threading.Tasks.Task<DAO1.FormationService.MStagiaire[]> GetStagiairesSectionAsync(string codeSection) {
+        public System.Threading.Tasks.Task<Exo9.FormationService.MStagiaire[]> GetStagiairesSectionAsync(string codeSection) {
             return base.Channel.GetStagiairesSectionAsync(codeSection);
         }
         
-        public string AddStagiaire(DAO1.FormationService.MStagiaire newStagiaire, DAO1.FormationService.MSection laSection) {
+        public string AddStagiaire(Exo9.FormationService.MStagiaire newStagiaire, Exo9.FormationService.MSection laSection) {
             return base.Channel.AddStagiaire(newStagiaire, laSection);
         }
         
-        public System.Threading.Tasks.Task<string> AddStagiaireAsync(DAO1.FormationService.MStagiaire newStagiaire, DAO1.FormationService.MSection laSection) {
+        public System.Threading.Tasks.Task<string> AddStagiaireAsync(Exo9.FormationService.MStagiaire newStagiaire, Exo9.FormationService.MSection laSection) {
             return base.Channel.AddStagiaireAsync(newStagiaire, laSection);
         }
         
-        public string UpdateStagiaire(DAO1.FormationService.MStagiaire leStagiaire) {
+        public string UpdateStagiaire(Exo9.FormationService.MStagiaire leStagiaire) {
             return base.Channel.UpdateStagiaire(leStagiaire);
         }
         
-        public System.Threading.Tasks.Task<string> UpdateStagiaireAsync(DAO1.FormationService.MStagiaire leStagiaire) {
+        public System.Threading.Tasks.Task<string> UpdateStagiaireAsync(Exo9.FormationService.MStagiaire leStagiaire) {
             return base.Channel.UpdateStagiaireAsync(leStagiaire);
         }
         
