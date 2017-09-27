@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassesDAO", "ClassesDAO\Cl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetierServices", "MetierServices\MetierServices.csproj", "{AB89AFBE-A6A1-4100-B50C-E10D13E35685}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAO", "DAO\DAO.csproj", "{B922C112-883E-4227-BF6D-6BE5AEF3F0AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,18 @@ Global
 		{AB89AFBE-A6A1-4100-B50C-E10D13E35685}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{AB89AFBE-A6A1-4100-B50C-E10D13E35685}.Release|x86.ActiveCfg = Release|Any CPU
 		{AB89AFBE-A6A1-4100-B50C-E10D13E35685}.Release|x86.Build.0 = Release|Any CPU
+		{B922C112-883E-4227-BF6D-6BE5AEF3F0AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B922C112-883E-4227-BF6D-6BE5AEF3F0AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B922C112-883E-4227-BF6D-6BE5AEF3F0AF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B922C112-883E-4227-BF6D-6BE5AEF3F0AF}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B922C112-883E-4227-BF6D-6BE5AEF3F0AF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B922C112-883E-4227-BF6D-6BE5AEF3F0AF}.Debug|x86.Build.0 = Debug|Any CPU
+		{B922C112-883E-4227-BF6D-6BE5AEF3F0AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B922C112-883E-4227-BF6D-6BE5AEF3F0AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B922C112-883E-4227-BF6D-6BE5AEF3F0AF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B922C112-883E-4227-BF6D-6BE5AEF3F0AF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B922C112-883E-4227-BF6D-6BE5AEF3F0AF}.Release|x86.ActiveCfg = Release|Any CPU
+		{B922C112-883E-4227-BF6D-6BE5AEF3F0AF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
