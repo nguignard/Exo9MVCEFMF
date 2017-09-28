@@ -19,19 +19,19 @@ namespace MetierServices
             /// </summary>
             /// <param name="value"></param>
             /// <returns></returns>
+        //    [OperationContract]
+        
+
+        //string GetData(int value);
+
+
             [OperationContract]
-        [WebGet(UriTemplate = "section/{codeSection}")]
-
-        string GetData(int value);
-
+        [WebGet(UriTemplate = "section/{codeCollection}")]
+                MSection GetSection(string codeCollection);
 
             [OperationContract]
         [WebGet(UriTemplate = "stagiaires/{codeSection}")]
-
-        MSection GetSection(string codeCollection);
-
-            [OperationContract]
-            IList<MStagiaire> GetStagiairesSection(string codeSection);
+        IList<MStagiaire> GetStagiairesSection(string codeSection);
 
             /// <summary>
             /// 
