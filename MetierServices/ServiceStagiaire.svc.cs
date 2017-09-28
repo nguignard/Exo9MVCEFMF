@@ -86,11 +86,11 @@ namespace MetierServices
             return retour;
         }
 
-        public bool DeleteStagiaire(Int32 laClefStagiaire)
+        public bool DeleteStagiaire(string laClefStagiaire)
         {
             try
             {
-                MStagiaireDAOEFStatic.SupprimeStagiaire(laClefStagiaire);
+                MStagiaireDAOEFStatic.SupprimeStagiaire(Int32.Parse(laClefStagiaire));
                 return true;
             }
             catch (Exception)

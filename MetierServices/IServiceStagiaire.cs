@@ -20,11 +20,15 @@ namespace MetierServices
             /// <param name="value"></param>
             /// <returns></returns>
             [OperationContract]
-            string GetData(int value);
+        [WebGet(UriTemplate = "section/{codeSection}")]
+
+        string GetData(int value);
 
 
             [OperationContract]
-            MSection GetSection(string codeCollection);
+        [WebGet(UriTemplate = "stagiaires/{codeSection}")]
+
+        MSection GetSection(string codeCollection);
 
             [OperationContract]
             IList<MStagiaire> GetStagiairesSection(string codeSection);
@@ -36,7 +40,8 @@ namespace MetierServices
             /// <param name=""></param>
             /// <returns>Retourne une string vide en cas de succès ou une string contenant le message d'erreur en cas d'échec</returns>
             [OperationContract]
-            string AddStagiaire(MStagiaire newStagiaire, MSection laSection);
+        [WebInvoke(Method = "POST", UriTemplate = "stagiaires/", RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.WrappedRequest)]
+        string AddStagiaire(MStagiaire newStagiaire, MSection laSection);
 
 
             /// <summary>
@@ -45,7 +50,9 @@ namespace MetierServices
             /// <param name="leStagiaire"></param>
             /// <returns>Retourne une string vide en cas de succès ou une string contenant le message         d'erreur en cas d'échec</returns>
             [OperationContract]
-            string UpdateStagiaire(MStagiaire leStagiaire);
+        [WebInvoke(Method = "PUT", UriTemplate = "stagiaires/")]
+
+        string UpdateStagiaire(MStagiaire leStagiaire);
 
             /// <summary>
             /// 
@@ -53,7 +60,8 @@ namespace MetierServices
             /// <param name="laClefStagiaire"></param>
             /// <returns>return true si le stagiaire est bien supprimé</returns>
             [OperationContract]
-            bool DeleteStagiaire(Int32 laClefStagiaire);
+        [WebInvoke(Method = "DELETE", UriTemplate = "stagiaires/{laClefStagiaire}")]
+        bool DeleteStagiaire(string laClefStagiaire);
 
 
 
